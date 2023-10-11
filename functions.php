@@ -30,12 +30,14 @@ function is_store_open() {
     $current_time = date('H:i');
 
     if (isset($store_hours[$current_day])) {
-        $open_time = strtotime($store_hours[$current_day]['open']);
-        $close_time = strtotime($store_hours[$current_day]['close']);
-        $current_time = strtotime($current_time);
+        foreach ($store_hours[$current_day] as $time_range) {
+            $open_time = strtotime($time_range['open']);
+            $close_time = strtotime($time_range['close']);
+            $current_time = strtotime($current_time);
 
-        if ($current_time >= $open_time && $current_time <= $close_time) {
-            return true;
+            if ($current_time >= $open_time && $current_time <= $close_time) {
+                return true;
+            }
         }
     }
 
