@@ -4,7 +4,6 @@ a function to check and restrict woocommerce checkout outside of store opening h
 # WooCommerce Store Hours Checker
 
 ![GitHub](https://img.shields.io/github/license/hmtechnology/woocommerce-store-hours-checker)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/hmtechnology/woocommerce-store-hours-checker)
 
 A PHP function to check and restrict WooCommerce checkout outside of store opening hours based on the specified time zone (e.g., "Europe/Rome").
 
@@ -41,7 +40,7 @@ To get started, follow these steps:
 
 ## Usage
 
-Integrate function contained in functions.php into your active functions.php to automatically restrict checkout outside of your store's opening hours. Make sure to customize the `$store_hours` array and set the correct time zone using `date_default_timezone_set()`.
+Integrate file functions.php into your active functions.php to automatically restrict checkout outside of your store's opening hours. Make sure to customize the `$store_hours` array and set the correct time zone using `date_default_timezone_set()`.
 
 ## Contributing
 
