@@ -54,6 +54,36 @@ function is_store_open() {
     return false;
 }
 
+// Add style to error message
+function add_custom_checkout_error_style() {
+    echo '<style>
+        .woocommerce .woocommerce-notices-wrapper {
+            background-color: #ff6666; 
+            padding: 10px; 
+            border: 1px solid #ff3333; 
+            border-radius: 4px; 
+        }
+
+        .woocommerce .woocommerce-notices-wrapper .woocommerce-error li {
+            list-style-type: none; 
+        }
+
+        .woocommerce .woocommerce-notices-wrapper .woocommerce-error li::before {
+            content: "\274C "; 
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        .woocommerce .woocommerce-error[role="alert"]::before {
+            content: none !important;
+        }
+
+        .woocommerce .woocommerce-error {
+            border-top: 0 !important;
+        }
+    </style>';
+}
+
 // Disable checkout when store is closed
 function disable_checkout_outside_store_hours() {
     if (!is_cart() && !is_checkout()) return;
@@ -61,33 +91,7 @@ function disable_checkout_outside_store_hours() {
     if (!is_store_open()) {
         wc_add_notice('The store is closed outside of the opening hours.', 'error');
         remove_action('woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20);
-		// Add style to error message
-        echo '<style>
-            .woocommerce-notices-wrapper {
-                background-color: #ff6666; 
-                padding: 10px; 
-                border: 1px solid #ff3333; 
-                border-radius: 4px; 
-            }
-
-            .woocommerce-notices-wrapper .woocommerce-error li {
-                list-style-type: none; 
-            }
-
-            .woocommerce-notices-wrapper .woocommerce-error li::before {
-                content: "\274C "; 
-                font-size: 16px;
-                margin-right: 5px;
-            }
-
-            .woocommerce .woocommerce-error[role="alert"]::before {
-                content: none !important;
-            }
-
-            .woocommerce .woocommerce-error {
-                border-top: 0 !important;
-            }
-        </style>';
+        add_action('wp_head', 'add_custom_checkout_error_style');
     }
 }
 
