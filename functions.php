@@ -18,7 +18,7 @@ $store_hours = array(
         array('open' => '09:00', 'close' => '18:00')
     ),
     'wednesday' => array(
-        array('open' => '09:00', 'close' => '13:00')
+        array('open' => '09:00', 'close' => '18:00')
     ),
     'thursday'  => array(
         array('open' => '09:00', 'close' => '18:00')
@@ -61,36 +61,34 @@ function disable_checkout_outside_store_hours() {
     if (!is_store_open()) {
         wc_add_notice('The store is closed outside of the opening hours.', 'error');
         remove_action('woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20);
+		// Add style to error message
+        echo '<style>
+            .woocommerce-notices-wrapper {
+                background-color: #ff6666; 
+                padding: 10px; 
+                border: 1px solid #ff3333; 
+                border-radius: 4px; 
+            }
+
+            .woocommerce-notices-wrapper .woocommerce-error li {
+                list-style-type: none; 
+            }
+
+            .woocommerce-notices-wrapper .woocommerce-error li::before {
+                content: "\274C "; 
+                font-size: 16px;
+                margin-right: 5px;
+            }
+
+            .woocommerce .woocommerce-error[role="alert"]::before {
+                content: none !important;
+            }
+
+            .woocommerce .woocommerce-error {
+                border-top: 0 !important;
+            }
+        </style>';
     }
-    
-    // Add style to error message
-    echo '<style>
-        .woocommerce-notices-wrapper {
-            background-color: #ff6666; 
-            padding: 10px; 
-            border: 1px solid #ff3333; 
-            border-radius: 4px; 
-        }
-
-        .woocommerce-notices-wrapper .woocommerce-error li {
-            list-style-type: none; 
-        }
-
-        .woocommerce-notices-wrapper .woocommerce-error li::before {
-            content: "\274C ";
-            font-size: 16px;
-            margin-right: 5px;
-        }
-
-        /* Rimuovi il bordo superiore */
-        .woocommerce .woocommerce-error[role="alert"]::before {
-            content: none !important;
-        }
-
-        .woocommerce .woocommerce-error {
-            border-top: 0 !important;
-        }
-    </style>';
 }
 
 add_action('wp', 'disable_checkout_outside_store_hours');
