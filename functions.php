@@ -1,7 +1,9 @@
 <?php
 
-// Synchronize WooCommerce shop's checkout with physical store's open hours
-// ---------------------------------------------------------------------------
+/*
+ * Synchronize WooCommerce shop's checkout with physical store's open hours
+ * This code restricts checkout when the store is closed.
+ */
 
 // Set the time zone to "Europe/Rome"
 date_default_timezone_set('Europe/Rome');
