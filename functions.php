@@ -1,4 +1,5 @@
 <?php
+// Synchronize WooCommerce shop's checkout with physical store's open hours
 
 // Set the time zone to "Europe/Rome"
 date_default_timezone_set('Europe/Rome');
