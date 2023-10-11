@@ -41,7 +41,7 @@ To get started, follow these steps:
 
 ## Usage
 
-Integrate function contained in woocommerce-store-hours-checker.php into your active functions.php to automatically restrict checkout outside of your store's opening hours. Make sure to customize the `$store_hours` array and set the correct time zone using `date_default_timezone_set()`.
+Integrate function contained in functions.php into your active functions.php to automatically restrict checkout outside of your store's opening hours. Make sure to customize the `$store_hours` array and set the correct time zone using `date_default_timezone_set()`.
 
 ## Contributing
 
