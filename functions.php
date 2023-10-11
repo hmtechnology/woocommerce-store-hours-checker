@@ -18,7 +18,7 @@ $store_hours = array(
         array('open' => '09:00', 'close' => '18:00')
     ),
     'wednesday' => array(
-        array('open' => '09:00', 'close' => '13:00')
+        array('open' => '09:00', 'close' => '18:00')
     ),
     'thursday'  => array(
         array('open' => '09:00', 'close' => '18:00')
