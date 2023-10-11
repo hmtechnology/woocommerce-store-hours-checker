@@ -85,14 +85,20 @@ function add_custom_checkout_error_style() {
 }
 
 // Disable checkout when store is closed
-function disable_checkout_outside_store_hours() {
-    if (!is_cart() && !is_checkout()) return;
-
-    if (!is_store_open()) {
-        wc_add_notice('The store is closed outside of the opening hours.', 'error');
-        remove_action('woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20);
-        add_action('wp_head', 'add_custom_checkout_error_style');
-    }
+function is_woocommerce_active() {
+    return class_exists('WooCommerce');
 }
 
-add_action('wp', 'disable_checkout_outside_store_hours');
+if (is_woocommerce_active()) {
+    function disable_checkout_outside_store_hours() {
+        if (!is_cart() && !is_checkout()) return;
+
+        if (!is_store_open()) {
+            wc_add_notice('The store is closed outside of the opening hours.', 'error');
+            remove_action('woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20);
+            add_action('wp_head', 'add_custom_checkout_error_style');
+        }
+    }
+
+    add_action('wp', 'disable_checkout_outside_store_hours');
+}
