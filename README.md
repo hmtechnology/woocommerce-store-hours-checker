@@ -1,5 +1,5 @@
 # woocommerce-store-hours-checker
-a function to check and restrict woocommerce checkout outside of store opening hours based on the specified time zone
+A function to check and restrict woocommerce checkout outside of physical store opening hours based on the specified time zone
 
 # WooCommerce Store Hours Checker
 
