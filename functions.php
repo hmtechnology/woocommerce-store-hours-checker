@@ -62,7 +62,7 @@ function add_custom_checkout_error_style() {
             padding: 10px; 
             border: 1px solid #ff3333; 
             border-radius: 4px; 
-            margin-bottom: 20px;
+            margin: 20px 0px;
         }
 
         .woocommerce .woocommerce-notices-wrapper .woocommerce-error li {
